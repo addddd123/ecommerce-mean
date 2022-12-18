@@ -1,0 +1,57 @@
+<div class="container-fluid  d-flex flex-column  justify-content-center ">
+  <form #contactForm="ngForm" (ngSubmit)="onSubmit(contactForm)" class="">
+    <!-- border  -->
+    <div class="container-fluid   d-flex flex-column    col-12  my-4  ">
+      <!-- <p align="center" class=" display-5 fs-1 mb-4">Login</p> -->
+      <div class="form-group mt-4">
+        <label for="email">Email address</label>
+        <input type="email" name="email" class="form-control " id="exampleInputEmail1" aria-describedby="emailHelp"
+          placeholder="Enter email" ngModel>
+
+      </div>
+      <div class="form-group mt-4">
+        <label for="exampleInputPassword1">Password</label>
+        <input type="password" name="password" class="form-control" id="exampleInputPassword1" placeholder="Password"
+          ngModel>
+      </div>
+
+      <button type="submit" mat-raised-button class="btn btn-primary mt-4 rounded-0">{{loading?'Logging
+        In...':'Login'}}</button>
+
+      <div class="float-right mt-2">
+        <button class="btn btn-link " style="float:right" (click)="openModal()">Forgot Password?</button>
+      </div>
+    </div>
+
+  </form>
+
+
+
+
+</div>
+
+
+<div class="modal " tabindex="-1" role="dialog" [ngStyle]="{'display':display}">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <p class="fs-6" id="exampleModalLongTitle">Reset Password</p>
+        <!-- <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button> -->
+      </div>
+      <div class="modal-body">
+        <div class="form-group ">
+          <label for="email">Enter Email To Reset Password</label>
+          <input type="email"  [(ngModel)]="email" name="email" class="form-control" id="exampleInputPassword1" placeholder="Email"
+            ngModel>
+            <p id="error" [ngStyle]="{'visibility':error}" class="bg-danger fs-6 font-weight-bold mt-1 ">Email Not Found</p>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="onCloseHandled()">Close</button>
+        <button type="button" class="btn btn-primary col-3"  (click)="forgotPassword()">Reset</button>
+      </div>
+    </div>
+  </div>
+</div>
