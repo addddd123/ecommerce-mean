@@ -1,5 +1,7 @@
+const { default: mongoose } = require('mongoose')
 const categoryModel = require('../../../models/Inventory/Category/category')
 const cloudinaryUpload = require('../../../utils/cloudnaryUpload')
+const { statusCodes } = require('../../../utils/errorHandler')
 let getCount = async (query = {}) => {
     return await categoryModel.find(query)
         .count()
@@ -44,4 +46,25 @@ exports.totalCategoriesCount = async (req, res, next) => {
         next(err)
     }
 
+}
+
+exports.deleteCategory=async (req,res,next) => {
+    try{
+        const id=req.params
+        console.log(req.params,'########')
+        if(!mongoose.Types.ObjectId.isValid(id)){
+            return res.status(400).json({error:true,message:"Id is not valid mongodb id"})
+        }
+        const categoryDeleted=await categoryModel.findByIdAndDelete(mongoose.Types.ObjectId(id))
+        if(categoryDeleted){
+            return res.status(200).json({error:false,message:"category deleted successfully",
+            categoryDeleted})
+        }
+        else{
+            return res.status(statusCodes.Not_Found).json({error:false,message:"couldnt delete category"})
+        }
+    }
+    catch(err){
+        next(err)
+    }
 }

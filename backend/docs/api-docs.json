@@ -11,12 +11,7 @@
     },
     "host": "localhost:3000",
     "basePath": "/",
-    "tags": [
-      {
-        "name": "Authentication",
-        "description": "API related to authentication"
-      }
-    ],
+
     "schemes": ["http"],
     "consumes": ["application/json"],
     "produces": ["application/json"],
@@ -43,6 +38,31 @@
               "description": "OK",
               "schema": {
                 "$ref": "#/definitions/Users"
+              }
+            }
+          }
+        }
+      },
+      "/category/delete-category/{:id}": {
+        "delete": {
+          "tags": ["CATEGORY"],
+          "summary": "Login in to the app",
+          "parameters": [
+            {
+              "in":"path",
+              "name":":id",
+              "required":"true",
+              "type":"string",
+              "minimum":12,
+              "description":"category id"
+             
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "OK",
+              "schema": {
+                "$ref": "#"
               }
             }
           }
