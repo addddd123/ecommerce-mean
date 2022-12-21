@@ -1,5 +1,5 @@
-const categoryModel = require('../../models/Inventory/Category/category')
-const cloudinaryUpload = require('../../utils/cloudnaryUpload')
+const categoryModel = require('../../../models/Inventory/Category/category')
+const cloudinaryUpload = require('../../../utils/cloudnaryUpload')
 let getCount = async (query = {}) => {
     return await categoryModel.find(query)
         .count()
