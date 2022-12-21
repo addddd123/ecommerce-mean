@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const authRouter=require('./Auth/authRouter')
-const categoryRouter=require('./Category/categoryRouter')
+const categoryRouter=require('./Inventory/Category/categoryRouter')
 
 
 router.use('/auth',authRouter)

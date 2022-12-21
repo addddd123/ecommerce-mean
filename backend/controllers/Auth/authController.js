@@ -57,7 +57,8 @@ exports.login = async (req, res, next) => {
 
                     userId: mongoose.Types.ObjectId(isUser?._id),
 
-                    $push: { "loginHistory": { ipAddress: req.ip } }
+                    $push: { "loginHistory": { ipAddress: req.ip,
+                        loginDateTime:new Date() } }
                 },
 
                 { safe: true, upsert: true, new: true })

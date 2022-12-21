@@ -1,0 +1,73 @@
+{
+    "swagger": "2.0",
+    "info": {
+      "version": "1.0.0", 
+      "title": "Ecommerce Web App",
+      "description": "Ecommerce Web App Apis",
+      "license": {
+        "name": "MIT",
+        "url": "https://opensource.org/licenses/MIT"
+      }
+    },
+    "host": "localhost:3000",
+    "basePath": "/",
+    "tags": [
+      {
+        "name": "Authentication",
+        "description": "API related to authentication"
+      }
+    ],
+    "schemes": ["http"],
+    "consumes": ["application/json"],
+    "produces": ["application/json"],
+  
+
+  
+    "paths": {
+      "/auth/login": {
+        "post": {
+          "tags": ["LOGIN"],
+          "summary": "Login in to the app",
+          "parameters": [
+            {
+              "name": "Login",
+              "in": "body",
+              "description": "Login in with email and password",
+              "schema": {
+                "$ref": "#"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "OK",
+              "schema": {
+                "$ref": "#/definitions/Users"
+              }
+            }
+          }
+        }
+      }
+    },
+    "definitions": {
+      "Login": {
+        "required": ["email", "password"],
+        "properties": {
+          "email": {
+            "type": "string"
+           
+          },
+          
+          "password": {
+            "type": "string"
+          }
+         
+          
+        }
+      },
+      "Users": {
+        "type": "array",
+        "$ref": "#/definitions/User"
+      }
+    }
+  }
